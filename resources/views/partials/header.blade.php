@@ -575,6 +575,55 @@
                                             </ul>
                                         </div>
                                     </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                                           aria-haspopup="true" aria-expanded="false" href="#">Category</a>
+                                        <!-- myDropdown dropdown-menu -->
+                                        <div class="dropdown-menu myDropdown">
+                                            <!-- navDropdownList -->
+                                            <ul class="list-unstyled navDropdownList">
+                                                <li>
+                                                    <a class="dropdown-item" href="{{route('category.create')}}">Create New</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                       href="{{route('category.list')}}">All Categories</a>
+                                                </li>
+{{--                                                <li class="dropdown-submenu">--}}
+{{--                                                    <a class="dropdown-item dropdown-toggle" href="#"--}}
+{{--                                                       role="button" data-toggle="dropdown" aria-haspopup="true"--}}
+{{--                                                       aria-expanded="false">Blog</a>--}}
+{{--                                                    <!-- myDropdown dropdown menu -->--}}
+{{--                                                    <div class="dropdown-menu myDropdown">--}}
+{{--                                                        <!-- navDropdownList -->--}}
+{{--                                                        <ul class="list-unstyled navDropdownList">--}}
+{{--                                                            <li><a class="dropdown-item"--}}
+{{--                                                                   href="06_01_Defaul version.html">Blog Defaul--}}
+{{--                                                                    Version</a></li>--}}
+{{--                                                            <li><a class="dropdown-item"--}}
+{{--                                                                   href="06_02_Grid version.html">Blog Grid--}}
+{{--                                                                    Version</a></li>--}}
+{{--                                                            <li class="dropdown-submenu">--}}
+{{--                                                                <a class="dropdown-item dropdown-toggle"--}}
+{{--                                                                   href="#" role="button" data-toggle="dropdown"--}}
+{{--                                                                   aria-haspopup="true" aria-expanded="false">Level-2</a>--}}
+{{--                                                                <!-- myDropdown dropdown menu -->--}}
+{{--                                                                <div class="dropdown-menu myDropdown">--}}
+{{--                                                                    <!-- navDropdownList -->--}}
+{{--                                                                    <ul class="list-unstyled navDropdownList">--}}
+{{--                                                                        <li><a class="dropdown-item" href="#">Child</a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li><a class="dropdown-item" href="#">Level-3</a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                    </ul>--}}
+{{--                                                                </div>--}}
+{{--                                                            </li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
+{{--                                                </li>--}}
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link flash_sale" href="#"><i
                                                 class="icon-icnFlash mr-1"></i>Flash sale</a>

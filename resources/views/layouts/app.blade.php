@@ -32,18 +32,27 @@
     </div>
     <main>
         <!-- introBlock -->
-        <div class="introBlock bgOverlay d-flex position-relative overflow-hidden">
-            @include('partials.category')
-            <span class="bgImg bgCover position-absolute" style="background-image: url('images/img139.jpg')"></span>
+        <div id="shopSideBar">
+            <!-- widget / widgetCategory -->
+            <div class="widget widgetCategory">
+                <div class="widgetHeader">
+                    <div class="container">
+                        <div class="row">
+                        @include('partials.side-bar')
+                            <div class="col-md-10">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- contentHolder -->
-        @yield('content')
     </main>
     <!-- footerAreaWrap -->
     <div class="footerAreaWrap position-relative">
         <!-- footerHolder -->
-        @include('partials.footer-holder')
-        <!-- footerArea -->
+    @include('partials.footer-holder')
+    <!-- footerArea -->
         @include('partials.footer')
     </div>
     <!-- backToTop -->

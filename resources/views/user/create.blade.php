@@ -203,10 +203,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 order-2 col-md-3 order-md-1 col-xlwd-2">
-                    <!-- shopSideBar -->
-                    @include('partials.side-bar')
-                </div>
             </div>
         </div>
     </div>

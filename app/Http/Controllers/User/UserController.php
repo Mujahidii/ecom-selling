@@ -16,4 +16,9 @@ class UserController extends Controller
     {
         return view('user.create');
     }
+
+    public function create()
+    {
+        return view('category.create');
+    }
 }
