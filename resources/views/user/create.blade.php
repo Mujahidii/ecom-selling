@@ -1,206 +1,180 @@
 @extends('layouts.app')
 @section('content')
-    <div class="contentHolder py-6 pt-md-10">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 order-1 col-md-9 order-md-2 col-xlwd-10">
-                    <div class="row">
-                        <div class="col-12 col-md-7 col-lg-8 col d-flex">
-                            <!-- clnWidget -->
-                            <article
-                                class="clnWidget overflow-hidden imgHasHover position-relative d-flex w-100 fsBody2">
-                                <a href="#" class="d-flex w-100">
-                                    <div
-                                        class="cpHolder position-relative d-flex flex-column w-100 pt-6 pb-30 pb-md-15 pb-lg-20 pb-xl-36 px-6 px-md-3 px-xl-6">
-                                        <strong class="clTitle h8 mb-0 fwNormal ">New collection</strong>
-                                        <h3 class="h3 fwSemibold">Leick Furniture</h3>
-                                    </div>
-                                    <span class="bgImg bgCover ihover position-absolute"
-                                          style="background-image: url('images/img157.jpg')"></span>
-                                </a>
-                            </article>
-                        </div>
-                        <div class="col-12 col-md-5 col-lg-4 col">
-                            <!-- clnWidget -->
-                            <article
-                                class="clnWidget overflow-hidden imgHasHover position-relative d-flex w-100 fsBody2">
-                                <a href="#" class="d-flex w-100">
-                                    <div
-                                        class="cpHolder position-relative d-flex flex-column w-100 pt-6 pb-30 pb-md-15 pb-lg-20 pb-xl-36 px-6 px-md-3 px-xl-6">
-                                        <strong class="clTitle h8 mb-0 fwNormal ">Featured item</strong>
-                                        <h3 class="h3 fwSemibold">Green Dadern</h3>
-                                    </div>
-                                    <span class="bgImg bgCover ihover position-absolute"
-                                          style="background-image: url('images/img158.jpg')"></span>
-                                </a>
-                            </article>
-                            <!-- clnWidget -->
-                            <article
-                                class="clnWidget overflow-hidden imgHasHover position-relative d-flex w-100 fsBody2">
-                                <a href="#" class="d-flex w-100">
-                                    <div
-                                        class="cpHolder position-relative d-flex flex-column w-100 pt-6 pb-30 pb-md-15 pb-lg-20 pb-xl-36 px-6 px-md-3 px-xl-6">
-                                        <strong class="clTitle h8 mb-0 fwNormal ">New arrivals</strong>
-                                        <h3 class="h3 fwSemibold">Headphone</h3>
-                                    </div>
-                                    <span class="bgImg bgCover ihover position-absolute"
-                                          style="background-image: url('images/img159.jpg')"></span>
-                                </a>
-                            </article>
-                        </div>
-                    </div>
-                    <!-- clnRow -->
-                    <div class="clnRow">
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img160.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Sign Up') }}</div>
+                    @include('partials.alerts')
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('user.store') }}">
+                            @csrf
+                            <div class="row mb-3">
+                                <label for="firstname"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+                                <div class="col-md-6">
+                                    <input id="firstname" type="text"
+                                           class="form-control {{--@error('firstname') is-invalid @enderror--}}"
+                                           name="firstname" value="{{ old('firstname') }}" required
+                                           autocomplete="firstname" autofocus>
+
+{{--                                    @error('firstname')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img25.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="lastname"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+                                <div class="col-md-6">
+                                    <input id="lastname" type="text"
+                                           class="form-control {{--@error('lastname') is-invalid @enderror--}}" name="lastname"
+                                           value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+
+{{--                                    @error('lastname')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img31.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="username"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
+                                <div class="col-md-6">
+                                    <input id="username" type="text"
+                                           class="form-control {{--@error('username') is-invalid @enderror--}}" name="username"
+                                           value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+{{--                                    @error('username')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img164.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="email"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                                <div class="col-md-6">
+                                    <input id="username" type="text"
+                                           class="form-control {{--@error('email') is-invalid @enderror--}}" name="email"
+                                           value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img147.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="status"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control mdSelectWrapper" name="status" required id="status">
+                                        <option value="" selected>Select Status</option>
+                                        <option value="0" {{old('status') === 0 ? 'selected' : ''}}>Inactive</option>
+                                        <option value="1" {{old('status') === 1 ? 'selected' : ''}}>Active</option>
+                                    </select>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img34.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="password"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password"
+                                           class="form-control" name="password"
+                                           required autocomplete="current-password">
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img42.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="confirm_password"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password"
+                                           class="form-control"
+                                           name="password_confirmation" required autocomplete="current-confirm-password">
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img163.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="phone"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                                <div class="col-md-6">
+                                    <input id="phone" type="text"
+                                           class="form-control" name="phone"
+                                           value="{{ old('phone') }}" required autocomplete="phone" autofocus>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img161.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Dob') }}</label>
+                                <div class="col-md-6">
+                                    <input max={{date('Y-m-d')}} name="dob" id="dob" type="date" class="form-control" placeholder="Date of birth" value="{{ date('Y-m-d') }}"/>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img162.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="address"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                                <div class="col-md-6">
+                                    <input id="address" type="text"
+                                           class="form-control" name="address"
+                                           value="{{ old('address') }}" required autocomplete="address" autofocus>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img165.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                                <div class="col-md-6">
+                                    <input id="city" type="text"
+                                           class="form-control" name="city"
+                                           value="{{ old('city') }}" required autocomplete="city" autofocus>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img166.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="state"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
+                                <div class="col-md-6">
+                                    <input id="state" type="text"
+                                           class="form-control" name="state"
+                                           value="{{ old('state') }}" required autocomplete="state" autofocus>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img167.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="zip_code"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Zip Code') }}</label>
+                                <div class="col-md-6">
+                                    <input id="zip_code" type="text"
+                                           class="form-control" name="zip"
+                                           value="{{ old('zip_code') }}" required autocomplete="zip_code" autofocus>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img143.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Type') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control mdSelectWrapper" name="type" required id="type">
+                                        <option value="" selected>Select Status</option>
+                                        <option value="seller" {{old('type') === 'seller' ? 'selected' : ''}}>Seller
+                                        </option>
+                                        <option value="buyer" {{old('type') === 'buyer' ? 'selected' : ''}}>Buyer
+                                        </option>
+                                        @if(isset(auth()->user()->type))
+                                            @if(auth()->user()->type == 'admin')
+                                                <option value="admin" {{old('type') === 'admin' ? 'selected' : ''}}>
+                                                    Admin
+                                                </option>
+                                            @endif
+                                        @endif
+                                    </select>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
-                        <div class="colCol d-flex">
-                            <!-- productCol -->
-                            <article class="productCol d-flex flex-column w-100 text-center py-1 mb-5">
-                                <div class="productImgWrap mb-3">
-                                    <a href="#" class="productImg"><img src="{{asset('images/img154.png')}}" class="img-fluid"
-                                                                        alt="image description"></a>
+                            </div>
+                            <div class="row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Sign Up') }}
+                                    </button>
+                                    <a class="btn btn-link" href="{{ url('/login') }}">
+                                        {{ __('Sign In?') }}
+                                    </a>
                                 </div>
-                                <h6 class="h8 productTitle fwNormal"><a href="#">Categories name</a></h6>
-                            </article>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

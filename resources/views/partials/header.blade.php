@@ -41,7 +41,8 @@
                                            placeholder="Search for products">
                                     <div class="input-group-append">
                                         <button class="btn btnYellow btnAuto" type="submit"><i
-                                                class="icon-Search mr-1"></i><span class="d-none d-md-inline">Search</span>
+                                                class="icon-Search mr-1"></i><span
+                                                class="d-none d-md-inline">Search</span>
                                         </button>
                                     </div>
                                 </div>
@@ -52,94 +53,97 @@
                             <i class="icon-Search"></i>
                         </a>
                         <!-- menuSocialNetworks -->
-                        <ul class="list-unstyled mb-0 d-flex justify-content-end menuSocialNetworks">
-                            <li>
-                                <a href="04_08_User Profile.html" class="icnLink">
-                                    <i class="icon-User"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="04_04_Compare.html" class="icnLink">
-                                    <i class="icon-Sync"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="04_03_Wishlist.html" class="icnLink">
-                                    <i class="icon-icnFavourtes"></i>
-                                </a>
-                            </li>
-                            <li class="position-relative">
-                                <a href="#" class="cartOpener icnLink">
-                                    <i class="icon-Bag"></i>
-                                    <span class="icon fwSemibold d-none">3</span>
-                                </a>
-                                <!-- cartSideBar -->
-                                <div class="cartSideBar position-fixed">
-                                    <!-- sideNav -->
-                                    <div class="sideNav px-3 px-sm-5 px-md-7 pt-10 pb-5">
-                                        <div
-                                            class="snHeader mb-2 pb-2 d-flex align-items-center justify-content-between">
-                                            <h6 class="h7 mb-0 fwSemibold">Your Cart</h6>
-                                            <a href="#" class="sideClose txtLink arrowTxtLink"></a>
-                                        </div>
-                                        <ul class="list-unstyled cartList mb-3 p-0">
-                                            <li>
-                                                <!-- cartItem -->
-                                                <div
-                                                    class="cartItem d-flex justify-content-center w-100 py-3 px-3 pr-sm-6 position-relative">
-                                                    <div class="proImg flex-shrink-0 mr-2">
-                                                        <a href="#"><img src="{{asset('images/img57.png')}}"
-                                                                         class="img-fluid"
-                                                                         alt="image description"></a>
-                                                    </div>
-                                                    <div class="proDetail pr-2">
-                                                        <h6 class="h7 fwSemibold mb-2"><a href="#">Plastec Cedar
-                                                                Wood Plant Caddy</a></h6>
-                                                        <div class="proPrice fwSemibold"><span class="currency">$</span>552
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="proClose position-absolute"><i
-                                                            class="fa fa-times"></i></a>
+                        {{--                        <ul class="list-unstyled mb-0 d-flex justify-content-end menuSocialNetworks">--}}
+                        {{--                            <a class="btn btn-primary" href="{{url('/login')}}">Login</a>--}}
+                        {{--                            @include('partials.login')--}}
+                        {{--                            <a class="btn btn-primary" href="{{route('user.logout')}}">Log Out</a>--}}
+                        {{--                            <li>--}}
+                        {{--                                <a href="04_08_User Profile.html" class="icnLink">--}}
+                        {{--                                    <i class="icon-User"></i>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li>--}}
+                        {{--                                <a href="04_04_Compare.html" class="icnLink">--}}
+                        {{--                                    <i class="icon-Sync"></i>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li>--}}
+                        {{--                                <a href="04_03_Wishlist.html" class="icnLink">--}}
+                        {{--                                    <i class="icon-icnFavourtes"></i>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        <li class="position-relative">
+                            <a href="#" class="cartOpener icnLink">
+                                <i class="icon-Bag"></i>
+                                <span class="icon fwSemibold d-none">3</span>
+                            </a>
+                            <!-- cartSideBar -->
+                            <div class="cartSideBar position-fixed">
+                                <!-- sideNav -->
+                                <div class="sideNav px-3 px-sm-5 px-md-7 pt-10 pb-5">
+                                    <div
+                                        class="snHeader mb-2 pb-2 d-flex align-items-center justify-content-between">
+                                        <h6 class="h7 mb-0 fwSemibold">Your Cart</h6>
+                                        <a href="#" class="sideClose txtLink arrowTxtLink"></a>
+                                    </div>
+                                    <ul class="list-unstyled cartList mb-3 p-0">
+                                        <li>
+                                            <!-- cartItem -->
+                                            <div
+                                                class="cartItem d-flex justify-content-center w-100 py-3 px-3 pr-sm-6 position-relative">
+                                                <div class="proImg flex-shrink-0 mr-2">
+                                                    <a href="#"><img src="{{asset('images/img57.png')}}"
+                                                                     class="img-fluid"
+                                                                     alt="image description"></a>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <!-- cartItem -->
-                                                <div
-                                                    class="cartItem d-flex justify-content-center w-100 py-3 px-3 pr-sm-6 position-relative">
-                                                    <div class="proImg flex-shrink-0 mr-2">
-                                                        <a href="#"><img src="{{asset('images/img58.png')}}"
-                                                                         class="img-fluid"
-                                                                         alt="image description"></a>
+                                                <div class="proDetail pr-2">
+                                                    <h6 class="h7 fwSemibold mb-2"><a href="#">Plastec Cedar
+                                                            Wood Plant Caddy</a></h6>
+                                                    <div class="proPrice fwSemibold"><span class="currency">$</span>552
                                                     </div>
-                                                    <div class="proDetail pr-2">
-                                                        <h6 class="h7 fwSemibold mb-2"><a href="#">Belham Living
-                                                                Bartlett Console</a></h6>
-                                                        <div class="proPrice fwSemibold"><span class="currency">$</span>552
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="proClose position-absolute"><i
-                                                            class="fa fa-times"></i></a>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                        <div class="snFooter">
-                                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="fsBody2">Subtotal</span>
-                                                <strong class="cartTotal fsBody2 txtBlack"><span
-                                                        class="currency txtBlack">$</span>1300</strong>
+                                                <a href="#" class="proClose position-absolute"><i
+                                                        class="fa fa-times"></i></a>
                                             </div>
-                                            <div class="snBtnWrap mb-5">
-                                                <a href="#" class="btn d-block w-100 btnGrey fwSemibold mr-1">View
-                                                    cart</a>
-                                                <a href="#" class="btn d-block w-100 mt-2 btnTheme fwSemibold">Proceed
-                                                    to Checkout</a>
+                                        </li>
+                                        <li>
+                                            <!-- cartItem -->
+                                            <div
+                                                class="cartItem d-flex justify-content-center w-100 py-3 px-3 pr-sm-6 position-relative">
+                                                <div class="proImg flex-shrink-0 mr-2">
+                                                    <a href="#"><img src="{{asset('images/img58.png')}}"
+                                                                     class="img-fluid"
+                                                                     alt="image description"></a>
+                                                </div>
+                                                <div class="proDetail pr-2">
+                                                    <h6 class="h7 fwSemibold mb-2"><a href="#">Belham Living
+                                                            Bartlett Console</a></h6>
+                                                    <div class="proPrice fwSemibold"><span class="currency">$</span>552
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="proClose position-absolute"><i
+                                                        class="fa fa-times"></i></a>
                                             </div>
-                                            <span
-                                                class="d-block fsBody2">Free Shipping on All Orders Over $100!</span>
+                                        </li>
+                                    </ul>
+                                    <div class="snFooter">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="fsBody2">Subtotal</span>
+                                            <strong class="cartTotal fsBody2 txtBlack"><span
+                                                    class="currency txtBlack">$</span>1300</strong>
                                         </div>
+                                        <div class="snBtnWrap mb-5">
+                                            <a href="#" class="btn d-block w-100 btnGrey fwSemibold mr-1">View
+                                                cart</a>
+                                            <a href="#" class="btn d-block w-100 mt-2 btnTheme fwSemibold">Proceed
+                                                to Checkout</a>
+                                        </div>
+                                        <span
+                                            class="d-block fsBody2">Free Shipping on All Orders Over $100!</span>
                                     </div>
                                 </div>
-                            </li>
+                            </div>
+                        </li>
                         </ul>
                     </div>
                 </div>
@@ -557,14 +561,16 @@
                                                             <li class="dropdown-submenu">
                                                                 <a class="dropdown-item dropdown-toggle"
                                                                    href="#" role="button" data-toggle="dropdown"
-                                                                   aria-haspopup="true" aria-expanded="false">Level-2</a>
+                                                                   aria-haspopup="true"
+                                                                   aria-expanded="false">Level-2</a>
                                                                 <!-- myDropdown dropdown menu -->
                                                                 <div class="dropdown-menu myDropdown">
                                                                     <!-- navDropdownList -->
                                                                     <ul class="list-unstyled navDropdownList">
                                                                         <li><a class="dropdown-item" href="#">Child</a>
                                                                         </li>
-                                                                        <li><a class="dropdown-item" href="#">Level-3</a>
+                                                                        <li><a class="dropdown-item"
+                                                                               href="#">Level-3</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -582,45 +588,48 @@
                                         <div class="dropdown-menu myDropdown">
                                             <!-- navDropdownList -->
                                             <ul class="list-unstyled navDropdownList">
-                                                <li>
-                                                    <a class="dropdown-item" href="{{route('category.create')}}">Create New</a>
-                                                </li>
+                                                @if(auth()->user())
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{route('category.create')}}">Create
+                                                            New</a>
+                                                    </li>
+                                                @endif
                                                 <li>
                                                     <a class="dropdown-item"
                                                        href="{{route('category.list')}}">All Categories</a>
                                                 </li>
-{{--                                                <li class="dropdown-submenu">--}}
-{{--                                                    <a class="dropdown-item dropdown-toggle" href="#"--}}
-{{--                                                       role="button" data-toggle="dropdown" aria-haspopup="true"--}}
-{{--                                                       aria-expanded="false">Blog</a>--}}
-{{--                                                    <!-- myDropdown dropdown menu -->--}}
-{{--                                                    <div class="dropdown-menu myDropdown">--}}
-{{--                                                        <!-- navDropdownList -->--}}
-{{--                                                        <ul class="list-unstyled navDropdownList">--}}
-{{--                                                            <li><a class="dropdown-item"--}}
-{{--                                                                   href="06_01_Defaul version.html">Blog Defaul--}}
-{{--                                                                    Version</a></li>--}}
-{{--                                                            <li><a class="dropdown-item"--}}
-{{--                                                                   href="06_02_Grid version.html">Blog Grid--}}
-{{--                                                                    Version</a></li>--}}
-{{--                                                            <li class="dropdown-submenu">--}}
-{{--                                                                <a class="dropdown-item dropdown-toggle"--}}
-{{--                                                                   href="#" role="button" data-toggle="dropdown"--}}
-{{--                                                                   aria-haspopup="true" aria-expanded="false">Level-2</a>--}}
-{{--                                                                <!-- myDropdown dropdown menu -->--}}
-{{--                                                                <div class="dropdown-menu myDropdown">--}}
-{{--                                                                    <!-- navDropdownList -->--}}
-{{--                                                                    <ul class="list-unstyled navDropdownList">--}}
-{{--                                                                        <li><a class="dropdown-item" href="#">Child</a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                        <li><a class="dropdown-item" href="#">Level-3</a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                    </ul>--}}
-{{--                                                                </div>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                </li>--}}
+                                                {{--                                                <li class="dropdown-submenu">--}}
+                                                {{--                                                    <a class="dropdown-item dropdown-toggle" href="#"--}}
+                                                {{--                                                       role="button" data-toggle="dropdown" aria-haspopup="true"--}}
+                                                {{--                                                       aria-expanded="false">Blog</a>--}}
+                                                {{--                                                    <!-- myDropdown dropdown menu -->--}}
+                                                {{--                                                    <div class="dropdown-menu myDropdown">--}}
+                                                {{--                                                        <!-- navDropdownList -->--}}
+                                                {{--                                                        <ul class="list-unstyled navDropdownList">--}}
+                                                {{--                                                            <li><a class="dropdown-item"--}}
+                                                {{--                                                                   href="06_01_Defaul version.html">Blog Defaul--}}
+                                                {{--                                                                    Version</a></li>--}}
+                                                {{--                                                            <li><a class="dropdown-item"--}}
+                                                {{--                                                                   href="06_02_Grid version.html">Blog Grid--}}
+                                                {{--                                                                    Version</a></li>--}}
+                                                {{--                                                            <li class="dropdown-submenu">--}}
+                                                {{--                                                                <a class="dropdown-item dropdown-toggle"--}}
+                                                {{--                                                                   href="#" role="button" data-toggle="dropdown"--}}
+                                                {{--                                                                   aria-haspopup="true" aria-expanded="false">Level-2</a>--}}
+                                                {{--                                                                <!-- myDropdown dropdown menu -->--}}
+                                                {{--                                                                <div class="dropdown-menu myDropdown">--}}
+                                                {{--                                                                    <!-- navDropdownList -->--}}
+                                                {{--                                                                    <ul class="list-unstyled navDropdownList">--}}
+                                                {{--                                                                        <li><a class="dropdown-item" href="#">Child</a>--}}
+                                                {{--                                                                        </li>--}}
+                                                {{--                                                                        <li><a class="dropdown-item" href="#">Level-3</a>--}}
+                                                {{--                                                                        </li>--}}
+                                                {{--                                                                    </ul>--}}
+                                                {{--                                                                </div>--}}
+                                                {{--                                                            </li>--}}
+                                                {{--                                                        </ul>--}}
+                                                {{--                                                    </div>--}}
+                                                {{--                                                </li>--}}
                                             </ul>
                                         </div>
                                     </li>
@@ -632,6 +641,11 @@
                             </div>
                         </nav>
                         <div class="revWrap position-relative">
+                            @if(auth()->user())
+                                <a href="{{route('logout')}}">Logout</a>
+                            @else
+                                <a href="{{route('login')}}">Login</a>
+                            @endif
                             <a href="#" class="recLink">Recent views</a>
                             <div class="dMenu">
                                 <ul class="list-unstyled prodList mb-0 p-0">
