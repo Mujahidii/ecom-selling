@@ -18,11 +18,11 @@
                                            name="firstname" value="{{ old('firstname') }}" required
                                            autocomplete="firstname" autofocus>
 
-{{--                                    @error('firstname')--}}
-{{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                    @enderror--}}
+                                    {{--                                    @error('firstname')--}}
+                                    {{--                                    <span class="invalid-feedback" role="alert">--}}
+                                    {{--                                        <strong>{{ $message }}</strong>--}}
+                                    {{--                                    </span>--}}
+                                    {{--                                    @enderror--}}
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -30,14 +30,15 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
                                 <div class="col-md-6">
                                     <input id="lastname" type="text"
-                                           class="form-control {{--@error('lastname') is-invalid @enderror--}}" name="lastname"
+                                           class="form-control {{--@error('lastname') is-invalid @enderror--}}"
+                                           name="lastname"
                                            value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
 
-{{--                                    @error('lastname')--}}
-{{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                    @enderror--}}
+                                    {{--                                    @error('lastname')--}}
+                                    {{--                                    <span class="invalid-feedback" role="alert">--}}
+                                    {{--                                        <strong>{{ $message }}</strong>--}}
+                                    {{--                                    </span>--}}
+                                    {{--                                    @enderror--}}
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -45,14 +46,15 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
                                 <div class="col-md-6">
                                     <input id="username" type="text"
-                                           class="form-control {{--@error('username') is-invalid @enderror--}}" name="username"
+                                           class="form-control {{--@error('username') is-invalid @enderror--}}"
+                                           name="username"
                                            value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-{{--                                    @error('username')--}}
-{{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                    @enderror--}}
+                                    {{--                                    @error('username')--}}
+                                    {{--                                    <span class="invalid-feedback" role="alert">--}}
+                                    {{--                                        <strong>{{ $message }}</strong>--}}
+                                    {{--                                    </span>--}}
+                                    {{--                                    @enderror--}}
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -60,7 +62,8 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
                                 <div class="col-md-6">
                                     <input id="username" type="text"
-                                           class="form-control {{--@error('email') is-invalid @enderror--}}" name="email"
+                                           class="form-control {{--@error('email') is-invalid @enderror--}}"
+                                           name="email"
                                            value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 </div>
                             </div>
@@ -80,7 +83,7 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
+                                    <input id="password1" type="password"
                                            class="form-control" name="password"
                                            required autocomplete="current-password">
                                 </div>
@@ -92,7 +95,17 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                            class="form-control"
-                                           name="password_confirmation" required autocomplete="current-confirm-password">
+                                           name="password_confirmation" required
+                                           autocomplete="current-confirm-password">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="id_card"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('User ID Card') }}</label>
+                                <div class="col-md-6">
+                                    <input id="id_card" type="text"
+                                           class="form-control" name="id_card"
+                                           value="{{ old('id_card') }}" required autocomplete="id_card" autofocus>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -107,7 +120,8 @@
                             <div class="row mb-3">
                                 <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Dob') }}</label>
                                 <div class="col-md-6">
-                                    <input max={{date('Y-m-d')}} name="dob" id="dob" type="date" class="form-control" placeholder="Date of birth" value="{{ date('Y-m-d') }}"/>
+                                    <input max={{date('Y-m-d')}} name="dob" id="dob" type="date" class="form-control"
+                                           placeholder="Date of birth" value="{{ date('Y-m-d') }}"/>
                                 </div>
                             </div>
                             <div class="row mb-3">

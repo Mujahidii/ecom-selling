@@ -4,9 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\HelperModules\HelperModule;
 use App\Http\Controllers\Controller;
-use App\Models\Person\Person;
 use App\Models\User\User;
-use App\Utilities\Constant;
+use App\Repository\BuyerRepo;
+use App\Repository\PersonRepo;
+use App\Repository\SellerRepo;
+use App\Repository\UserRepo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +18,18 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     protected User $user;
+    protected PersonRepo $personRepo;
+    protected BuyerRepo $buyerRepo;
+    protected SellerRepo $sellerRepo;
+    protected UserRepo $userRepo;
 
     public function __construct()
     {
         $this->user = new User();
+        $this->personRepo = new PersonRepo();
+        $this->buyerRepo = new BuyerRepo();
+        $this->sellerRepo = new SellerRepo();
+        $this->userRepo = new UserRepo();
     }
 
     public function index()
@@ -41,25 +51,27 @@ class UserController extends Controller
         try {
             $validation = Validator::make($request->all(), $this->user->rules());
             if ($validation->fails()) {
-                return redirect()->back()->with('error', $validation->errors()->first());
+                return redirect()->back()->with('error', $validation->errors()->first())->withInput();
             }
             $phone = HelperModule::phoneRemoveSpace($request);
             $request->merge(['phone' => $phone]);
             DB::beginTransaction();
-            $person = HelperModule::createPerson($request);
-//            $person = Person::create($request->only('first_name', 'last_name', 'phone', 'dob', 'address', 'city', 'state', 'zip', 'created_by', 'updated_by'));
-            $request->request->add(['person_id' => $person->id, 'type' => $request->type ?? 'admin']);
-//            if ($request->type = 'Buyer') {
-//
-//            } elseif ($request->type = 'Seller') {
-//
-//            }
-            HelperModule::createUser($request);
-//            $this->user->create($request->only('username', 'email', 'person_id', 'password', 'status', 'type'));
+            $person = $this->personRepo->store($request);
+            $type_reference_id = null;
+            if ($request->type = 'buyer') {
+                $buyer = $this->buyerRepo->store($request);
+                $type_reference_id = $buyer->id;
+            } elseif ($request->type = 'seller') {
+                $seller = $this->sellerRepo->store($request);
+                $type_reference_id = $seller->id;
+            }
+            $request->request->add(['person_id' => $person->id, 'type' => $request->type, 'type_reference_id' => $type_reference_id ?? null]);
+            $this->userRepo->store($request);
             DB::commit();
             return redirect()->to('/login')->with('success', Lang::get('messages.created', ['attribute' => 'User']));
         } catch (\Exception $e) {
-            return redirect()->route('user.create')->with('error', $e->getMessage());
+            DB::rollBack();
+            return redirect()->route('user.create')->with('error', $e->getMessage())->withInput();
         }
     }
 }

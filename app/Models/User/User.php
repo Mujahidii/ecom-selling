@@ -25,6 +25,7 @@ class User extends Authenticatable
         'password',
         'person_id',
         'type_reference_id',
+        'id_card',
         'type',
         'status',
         'created_by',
@@ -50,8 +51,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['full_name'];
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullNameAttribute(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

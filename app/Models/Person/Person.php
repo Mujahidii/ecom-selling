@@ -2,15 +2,17 @@
 
 namespace App\Models\Person;
 
-use Carbon\Carbon;
+use App\Models\Person\traits\Validation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
-    use HasFactory;
+    use HasFactory, Validation;
 
     protected $table = 'persons';
+
+    protected $casts = ['dob' => 'date:Y-m-d'];
 
     protected $fillable = [
         'first_name',
@@ -21,14 +23,8 @@ class Person extends Model
         'city',
         'state',
         'zip',
+        'id_card',
         'created_by',
         'updated_by',
     ];
-
-    public function setDobAttribute($value)
-    {
-        $this->attributes['dob'] = isset($value) ? Carbon::parse($value)->toDateTimeString() : Carbon::now()->toDateTimeString();
-    }
-
-
 }

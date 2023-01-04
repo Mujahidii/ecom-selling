@@ -28,10 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [UserController::class, 'index'])->name('home');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::group(['middleware' => 'auth'], fn() => [
-    Route::get('/create', [UserController::class, 'create'])->name('user.create'),
-    Route::post('/store', [UserController::class, 'store'])->name('user.store'),
-]);
+Route::get('/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/store', [UserController::class, 'store'])->name('user.store');
 
 Route::get('category/list', [CategoryController::class, 'index'])->name('category.list');
 

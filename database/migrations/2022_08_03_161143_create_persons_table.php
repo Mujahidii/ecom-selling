@@ -19,6 +19,7 @@ class CreatePersonsTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('phone')->nullable();
             $table->date('dob')->nullable();
+            $table->string('id_card')->unique()->nullable();
             $table->longText('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
