@@ -3,13 +3,13 @@
     <!-- bannerSec -->
     <div class="bannerSec bannerSecII">
         <div class="txtWrap">
-            <h1 class="btn-info"><i class="fas fa-user-plus mdIcn faicon"></i> All Categories </h1>
+            <h1 class="btn-info"><i class="fas fa-user-plus mdIcn faicon"></i> Sub Categories </h1>
         </div>
     </div>
     @include('partials.alerts')
     <!-- anmSection -->
     <div class="anmSection">
-        @if(count($categoriesData) > 0)
+        @if(count($subCategories) > 0)
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
@@ -21,13 +21,12 @@
                     {{--                    @can('marketing-destroy')--}}
                     @if(auth()->user() && auth()->user()->type === 'admin')
                         <th>Actions</th>
-                        <th>Child</th>
-                    {{--                    @endcan--}}
+                        {{--                    @endcan--}}
                     @endif
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($categoriesData as $key => $category)
+                @foreach($subCategories as $key => $category)
                     <tr>
                         <td>{{$category->name}}</td>
                         <td>
@@ -56,19 +55,6 @@
                             </td>
                         @endif
                         {{--                        @endcan--}}
-                        <td>
-                            <li class="ctItem">
-                                <a data-toggle="modal" data-target="#sub_category_create_{{$category->id}}">
-                                    <span class="fa fa-folder"></span>
-                                </a>
-                                @include('partials.categoriesPopUps.sub-category-create', ['category_id' => $category->id])
-                            </li>
-                            <li class="ctItem">
-                                <a href="{{route('sub.category.list', $category->id)}}">
-                                    <span class="fa fa-bars"></span>
-                                </a>
-                            </li>
-                        </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -78,6 +64,3 @@
         @endif
     </div>
 @endsection
-@push('scripts')
-
-@endpush

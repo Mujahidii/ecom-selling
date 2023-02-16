@@ -1,18 +1,18 @@
-<div class="modal fade" id="category_edit_{{$category_id}}"
+<div class="modal fade" id="sub_category_create_{{$category_id}}"
      tabindex="-1" role="dialog" aria-labelledby="applicantModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div style="margin-left: 5px;">
                 <div class="anmSection">
-                    <form action="{{route('category.edit', $category->id)}}" class="anmForm" method="POST" id="formValidation">
+                    <form action="{{route('category.store')}}" class="anmForm" method="POST" id="formValidation">
                         @csrf
-                        {!! method_field('PUT') !!}
+                        <input type="hidden" value="{{$category_id}}" name="parent_id">
                         <div class="formBody">
                             <div class="formInlineRow">
                                 <div class="formCol">
                                     <label>Category Title</label>
                                     <div class="mdSelectWrapper">
-                                        <input type="text" value="{{$category->name}}" name="category_title"
+                                        <input type="text" value="{{old('category_title')}}" name="category_title"
                                                id="category_title" required placeholder="Category Title"
                                                class="text-capitalize mdInput">
                                     </div>
@@ -22,11 +22,9 @@
                                     <label>Status</label>
                                     <div class="mdSelectWrapper">
                                         <select class="mdSelectWrapper" name="status" id="status">
-                                            <option @if($category->status == 0) selected @endif value="0">Inactive
-                                            </option>
-                                            <option @if($category->status == 1) selected @endif
-                                            value="1">Active
-                                            </option>
+                                            <option value="">Select Category</option>
+                                            <option value="0">Inactive</option>
+                                            <option value="1">Active</option>
                                         </select>
                                     </div>
                                 </div>
@@ -34,9 +32,9 @@
                                 <div class="formCol">
                                     <label>Description</label>
                                     <div class="mdSelectWrapper">
-                            <textarea placeholder="Description" id="category_description" name="description"
-                                      class="text-capitalize mdInput" cols="21">{{$category->description}}
-                            </textarea>
+                                        <textarea placeholder="Description" id="category_description" name="description"
+                                                  class="text-capitalize mdInput" cols="21">
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -46,10 +44,11 @@
                             <div class="pagnitionFooter">
                                 <div class="alignLeft">&nbsp;</div>
                                 <div class="alignRight">
-                                    <button class="btn btn-info"><a href="{{route('category.list')}}"
-                                                                                  style="text-decoration: none">Go
-                                            Back</a></button>
-                                    <button type="submit" class="btn btn-success">Update
+                                    <a href="javascript:void(0);" style="text-decoration: none">
+                                        <span class="fa fa-close btn btn-primary" data-dismiss="modal">Close</span>
+                                    </a>
+                                    <button type="submit" class="btn btn-success">
+                                        <span>Create</span>
                                     </button>
                                 </div>
                             </div>

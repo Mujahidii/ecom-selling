@@ -8,8 +8,10 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Exception;
 
 class LoginController extends Controller
 {
@@ -49,12 +51,13 @@ class LoginController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return RedirectResponse
      */
-    public function login(): RedirectResponse
+    public function login(Request $request): RedirectResponse
     {
         try {
-            $validator = Validator::make(request()->all(), [
+            $validator = Validator::make($request->all(), [
                 'username' => 'required',
                 'password' => 'required',
             ]);
@@ -62,14 +65,17 @@ class LoginController extends Controller
             if ($validator->fails()) {
                 return redirect()->to('/login')->with('error', $validator->errors()->first());
             }
-            $username = request()->username;
-            User::where('username', $username)->firstOrFail();
-            $credentials = request()->only('username', 'password');
+            $username = $request->username;
+            $user = User::where('username', $username)->first();
+            if (empty($user)) {
+                throw new Exception('InValid Credentials');
+            }
+            $credentials = $request->only('username', 'password');
             if (!Auth::attempt($credentials)) {
                 return redirect()->to('/login')->with('error', 'You have entered invalid credentials');
             }
             return redirect()->route('category.list')->with('success', 'You are successfully logged in');
-        } catch (\Exception$e) {
+        } catch (Exception $e) {
             return redirect()->to('/login')->with('error', $e->getMessage());
         }
     }

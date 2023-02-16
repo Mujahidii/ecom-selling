@@ -4,6 +4,11 @@ namespace App\Utilities;
 
 class Constant
 {
+    const user = [
+        'buyer' => 'buyer',
+        'seller' => 'seller',
+        'admin' => 'admin',
+    ];
     # List of status codes being used in this project are below
     # HttpCodes::OK // 200 (for success request)
     # HttpCodes::BadRequest // 400 (for exception case)

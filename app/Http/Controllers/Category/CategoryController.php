@@ -20,8 +20,8 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $categories = Category::all();
-            return view('category.index', compact('categories'));
+            $categoriesData = Category::whereNull('parent_id')->get();
+            return view('category.index', compact('categoriesData'));
         } catch (Exception $e) {
             return redirect()->route('category.list')
                 ->with('error', $e->getMessage());
@@ -35,31 +35,46 @@ class CategoryController extends Controller
     }
 
     /**
-     * @return Response
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
-    public function store(): Response
+    public function store(Request $request)
     {
         try {
-            $validator = Validator::make(request()->all(), [
-                'category_title' => ['required', Rule::unique('categories', 'name')]
-            ]);
+            if (empty($request->parent_id)) {
+                $validator = Validator::make(request()->all(), [
+                    'category_title' => ['required', Rule::unique('categories', 'name')]
+                ]);
 
-            if ($validator->fails()) {
-                return HelperModule::jsonResponse(null, $validator->errors()->first(), Constant::BadRequest);
+                if ($validator->fails()) {
+                    return HelperModule::jsonResponse(null, $validator->errors()->first(), Constant::BadRequest);
+                }
+            } else {
+                $category = Category::whereId($request->parent_id)->first();
+                if (empty($category)) {
+                    return redirect()->route('category.list')
+                        ->with('error', "Parent Category not found in our system.");
+                }
             }
-            request()->request->add(['channel_type' => 'Dashboard']);
             $category = Category::create([
                 'name' => request()->category_title,
+                'parent_id' => $request->parent_id ?? null,
                 'description' => request()->description ?? null,
                 'status' => request()->status ?? "1",
-                'channel_type' => request()->channel_type,
+                'channel_type' => 'Dashboard',
                 'created_by' => auth()->user()->id ?? null,
                 'updated_by' => auth()->user()->id ?? null,
             ]);
-//            return redirect()->route('category.index')->with('success', 'Category created Successfully.');
+            if ($request->parent_id) {
+                return redirect()->route('category.list')
+                    ->with('success', "Child category successfully saved.");
+            }
             return HelperModule::jsonResponse(new CategoryResource($category), 'Category created Successfully.', Constant::OK);
         } catch (Exception $e) {
-//            return redirect()->back()->with('error', $e->getMessage());
+            if ($request->parent_id) {
+                return redirect()->route('category.list')
+                    ->with('error', $e->getMessage());
+            }
             return HelperModule::jsonResponse(null, $e->getMessage(), Constant::InternalServerError);
         }
     }
@@ -79,13 +94,12 @@ class CategoryController extends Controller
             if ($validator->fails()) {
                 return redirect()->route('category.list')->with('error', $validator->errors()->first());
             }
-            $request->request->add(['channel_type' => 'Dashboard']);
             $category = Category::findOrFail($id);
             $category->update([
                 'name' => $request->category_title,
                 'status' => $request->status ?? 1,
                 'description' => $request->description ?? null,
-                'channel_type' => $request->channel_type,
+                'channel_type' => 'Dashboard',
                 'updated_by' => auth()->user()->id ?? null,
             ]);
             return redirect()->route('category.list')

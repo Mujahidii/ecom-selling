@@ -16,6 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->unsignedInteger('parent_id')->nullable();
             $table->enum('status', [0, 1])->default(1);
             $table->string('channel_type')->nullable();
             $table->longText('description')->nullable();

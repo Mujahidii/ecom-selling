@@ -9,6 +9,8 @@ use App\Repository\BuyerRepo;
 use App\Repository\PersonRepo;
 use App\Repository\SellerRepo;
 use App\Repository\UserRepo;
+use App\Utilities\Constant;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,7 +36,14 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user.create');
+        try {
+            $users = User::all();
+            return view('user.index', compact('users'));
+        } catch (Exception $e) {
+            return redirect()
+                ->back()
+                ->with('error', $e->getMessage());
+        }
     }
 
     public function create()
@@ -58,10 +67,10 @@ class UserController extends Controller
             DB::beginTransaction();
             $person = $this->personRepo->store($request);
             $type_reference_id = null;
-            if ($request->type = 'buyer') {
+            if ($request->type = Constant::user['buyer']) {
                 $buyer = $this->buyerRepo->store($request);
                 $type_reference_id = $buyer->id;
-            } elseif ($request->type = 'seller') {
+            } elseif ($request->type = Constant::user['seller']) {
                 $seller = $this->sellerRepo->store($request);
                 $type_reference_id = $seller->id;
             }
@@ -72,6 +81,22 @@ class UserController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->route('user.create')->with('error', $e->getMessage())->withInput();
+        }
+    }
+
+    /**
+     * @param $userId
+     * @return RedirectResponse
+     */
+    public function destroy($userId): RedirectResponse
+    {
+        try {
+            User::findOrFail($userId)->delete();
+            return redirect()->route('user.list')->with('success', 'User Deleted Successfully.');
+        } catch (Exception $e) {
+            return redirect()
+                ->back()
+                ->with('error', $e->getMessage());
         }
     }
 }
