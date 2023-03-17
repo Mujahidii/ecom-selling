@@ -86,13 +86,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id): RedirectResponse
     {
+        $route = 'category.list';
+        $message = 'Category Updated Successfully.';
+        if ($request->subCat) {
+            $route = 'sub.category.list';
+            $message = 'Child Category Updated Successfully.';
+        }
         try {
             $validator = Validator::make($request->all(), [
-                'category_title' => ['required', Rule::unique('categories', 'name')],
+                'category_title' => 'required',
                 'status' => 'required'
             ]);
             if ($validator->fails()) {
-                return redirect()->route('category.list')->with('error', $validator->errors()->first());
+                return redirect()->route($route)->with('error', $validator->errors()->first());
             }
             $category = Category::findOrFail($id);
             $category->update([
@@ -102,10 +108,10 @@ class CategoryController extends Controller
                 'channel_type' => 'Dashboard',
                 'updated_by' => auth()->user()->id ?? null,
             ]);
-            return redirect()->route('category.list')
-                ->with('success', 'Category Updated Successfully.');
+            return redirect()->route($route)
+                ->with('success', $message);
         } catch (Exception $e) {
-            return redirect()->route('category.list')
+            return redirect()->route($route)
                 ->with('error', $e->getMessage());
         }
     }

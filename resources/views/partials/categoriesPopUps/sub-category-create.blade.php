@@ -45,7 +45,7 @@
                                 <div class="alignLeft">&nbsp;</div>
                                 <div class="alignRight">
                                     <a href="javascript:void(0);" style="text-decoration: none">
-                                        <span class="fa fa-close btn btn-primary" data-dismiss="modal">Close</span>
+                                        <span class="fa fa-close btn btn-primary" data-dismiss="modal"></span>
                                     </a>
                                     <button type="submit" class="btn btn-success">
                                         <span>Create</span>

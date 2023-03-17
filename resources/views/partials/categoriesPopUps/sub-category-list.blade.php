@@ -51,7 +51,7 @@
                                    data-target="#category_edit_{{$category->id}}" style="width: 41px;">
                                     <span class="fa fa-edit"></span>
                                 </a>
-                                @include('partials.categoriesPopUps.category-edit', ['category_id' => $category->id, 'category' => $category])
+                                @include('partials.categoriesPopUps.category-edit', ['category_id' => $category->id, 'category' => $category, 'subCat' => true])
                             </td>
                         @endif
                         {{--                        @endcan--}}

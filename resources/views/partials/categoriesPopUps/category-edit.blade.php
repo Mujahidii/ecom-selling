@@ -7,6 +7,9 @@
                     <form action="{{route('category.edit', $category->id)}}" class="anmForm" method="POST" id="formValidation">
                         @csrf
                         {!! method_field('PUT') !!}
+                        @if(isset($subCat))
+                            <input type="hidden" name="subCat" value="{{$subCat}}">
+                        @endif
                         <div class="formBody">
                             <div class="formInlineRow">
                                 <div class="formCol">
@@ -22,11 +25,8 @@
                                     <label>Status</label>
                                     <div class="mdSelectWrapper">
                                         <select class="mdSelectWrapper" name="status" id="status">
-                                            <option @if($category->status == 0) selected @endif value="0">Inactive
-                                            </option>
-                                            <option @if($category->status == 1) selected @endif
-                                            value="1">Active
-                                            </option>
+                                            <option @if($category->status == 0) selected @endif value="0"> Inactive</option>
+                                            <option @if($category->status == 1) selected @endif value="1"> Active</option>
                                         </select>
                                     </div>
                                 </div>
@@ -34,9 +34,9 @@
                                 <div class="formCol">
                                     <label>Description</label>
                                     <div class="mdSelectWrapper">
-                            <textarea placeholder="Description" id="category_description" name="description"
-                                      class="text-capitalize mdInput" cols="21">{{$category->description}}
-                            </textarea>
+                                        <textarea placeholder="Description" id="category_description" name="description" class="text-capitalize mdInput" cols="21">
+                                            {{$category->description}}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -46,11 +46,12 @@
                             <div class="pagnitionFooter">
                                 <div class="alignLeft">&nbsp;</div>
                                 <div class="alignRight">
-                                    <button class="btn btn-info"><a href="{{route('category.list')}}"
-                                                                                  style="text-decoration: none">Go
-                                            Back</a></button>
-                                    <button type="submit" class="btn btn-success">Update
-                                    </button>
+                                    <a href="{{route('category.list')}}" style="text-decoration: none">
+                                        <span class="btn btn-primary" data-dismiss="modal">
+                                            Go Back
+                                        </span>
+                                    </a>
+                                    <button type="submit" class="btn btn-success"> Update</button>
                                 </div>
                             </div>
                         </div>
